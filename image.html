@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .slider-container {
+            position: relative;
+            width: 400px;
+            margin: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+    </div>
+    <div class="buttons">
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            'C:/Users/hp/Desktop/Assesment/Com_Assessment-/luffy-gear-5-moonlit-night-one-piece-thumb.jpg',
+            'C:/Users/hp/Desktop/Assesment/Com_Assessment-/puma1.jpg',
+            'C:/Users/hp/Desktop/Assesment/Com_Assessment-/Puma-ktm-replica-shoes-3.jpg'
+        ];
+        
+        let currentIndex = 0;
+        const slider = document.getElementById('slider');
+
+        function showImage(index) {
+            if (index < 0) {
+                currentIndex = images.length - 1;
+            } else if (index >= images.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            slider.src = images[currentIndex];
+        }
+        function prevImage() {
+            showImage(currentIndex - 1);
+        }
+        function nextImage() {
+            showImage(currentIndex + 1);
+        }
+        showImage(currentIndex);
+    </script>
+</body>
+</html>
